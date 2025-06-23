@@ -1,2 +1,5 @@
 # llm-from-scratch
-Messing about with Transformers.
+
+## Walkthrough of Building This
+
+https://www.youtube.com/watch?v=yAcWnfsZhzo
