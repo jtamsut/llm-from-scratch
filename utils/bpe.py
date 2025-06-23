@@ -1,13 +1,19 @@
-from collections import defaultdict, Counter
+class BPETokenizer:
+    def __init__(self):
+        self.vocab = self._build_vocab()
+        
+    def _build_vocab(self):
+        return
 
+"""
 SAMPLE_FILE = '/Users/jon/Desktop/llm-from-scratch/data/file1.txt'
 EOW = "W" # the end of word symbol
 
-"""
 Byte-pair encoding
 - begin with a set of individual characters
-- next choose the two characters that are most frequently adjacent
-"""
+- next choose the two tokens that are most frequently adjacent
+- merge these tokens together and add them to the vocabulary
+- replace every (token1, token2) with new_token in the vocabulary
 
 def append_word_boundaries(corpus):
     new_corpus = ''
@@ -31,6 +37,8 @@ def initial_vocab(corpus):
 
 def merge_vocab(pair, vocab):
     new_token = ''.join(pair)
+
+    vocab
 
     for token_tuple, freq in vocab.items():
         word_str = ''.join(token_tuple)
@@ -58,3 +66,4 @@ def load_data(filename):
 data = load_data(SAMPLE_FILE)
 corpus = append_word_boundaries(data)
 print(bpe(corpus))
+"""
