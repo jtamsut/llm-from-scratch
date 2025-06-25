@@ -39,10 +39,33 @@ def init_dataloader(txt, batch_size=4, max_length=256, stride=128, shuffle=True,
     )
 
 if __name__ == "__main__":
+    vocab_size = 50257
+    output_dim = 256
+    context_length = 1024
+    batch_size = 8
+    max_length = 4
+
     with open(FILE, "r", encoding="utf-8") as file:
         text = file.read()
 
-    d = init_dataloader(text)
-    print(d)
+    dataloader = init_dataloader(
+        text,
+        batch_size=batch_size,
+        max_length=max_length,
+        stride=max_length,
+    )
 
+    token_embedding_layer = torch.nn.Embedding(vocab_size, output_dim)
+    pos_embedding_layer = torch.nn.Embedding(context_length, output_dim)
 
+    for batch in dataloader:
+        x, y = batch 
+
+        token_embeddings = token_embedding_layer(x)
+        pos_embeddings = pos_embedding_layer(torch.arange(max_length))
+
+        input_embeddings = token_embeddings + pos_embeddings
+
+        print(input_embeddings)
+
+        break
